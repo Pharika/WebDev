@@ -1,0 +1,220 @@
+<!doctype html>
+<html>
+<head>
+    <title>Learnign javascript</title>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style type="text/css">
+       #circle {
+           width: 200px;
+           height: 200px;
+           border-radius: 100px;
+           background-color: red;
+       }
+    
+    </style>
+    
+</head>
+<body>
+    <button onclick="alert('Hi')">Click Me</button>
+    <button id="mybutton">You know you want to click me </button>
+    
+    <button id="textchanger">change the first div</button>
+    <p id ="text" >Some text</p>
+    <div id="firstdiv">This is some text</div>
+    <button id="appendtext">Append some text</button>
+    <div id = "seconddiv"> Javascript is...</div>
+    <button id="createtext">Create some text</button>
+    <div id = "thirddiv"></div>
+    <div id="circle">
+       
+    </div>
+    <input id="myinput" type="text" value="test" />
+    <button id="myinputbutton">Change me!</button>
+      <div id = "fourthdiv">I will change</div>   
+    
+    <button id="food">Change food!</button>
+      <div id = "fifthdiv">food</div>  
+    <p>What is the weather</p>
+    <input id="weather"/>
+    <button id="weatherbutton">Submit</button>
+    
+    <p>How many fingers am I holdeing up?</p>
+    <input id="answer" />
+    <button id="ansbutton">submit</button>
+    
+    <p id="arrString"></p>
+    <p id="arr2String"></p>
+    
+    <p>How many fingers are you holding up (1<=x<5)?</p>
+    <input id="mynum"/>
+    <button id="guess">Guess!</button>
+    
+    <p id="func">Addition result:</p>
+    
+    <script type="text/javascript">
+       // This is a comment   
+        
+        /* 
+        multiline comment
+        */
+        
+     // alert(document.getElementById("text").innerHTML);
+      document.getElementById("text").innerHTML="Some more text";
+       document.getElementById("mybutton").onclick=function() {
+            alert("Hi");
+        }
+       document.getElementById("textchanger").onclick=function() {
+           document.getElementById("firstdiv").innerHTML="This is awsome";
+       }
+        document.getElementById("appendtext").onclick=function() {
+            document.getElementById("seconddiv").innerHTML=document.getElementById("seconddiv").innerHTML + "great!";
+        }
+        document.getElementById("createtext").onclick=function() {
+             document.getElementById("thirddiv").innerHTML="<ul><li>cat</li><li>dog</li></ul>";
+        }
+        
+        //variables
+        var divId="circle";
+        document.getElementById("circle").onclick=function() {
+             //document.getElementById("circle").style.display="none";
+            document.getElementById(divId).style.display="none";
+        }
+        
+        var newText = document.getElementById("myinput").value;
+        document.getElementById("myinputbutton").onclick=function() {
+            newText = document.getElementById("myinput").value;
+           document.getElementById("fourthdiv").innerHTML=newText;
+       }
+        
+        
+        //array
+        
+        var myarray = new Array();
+        myarray[0]="pizza";
+        myarray[1]="chocolate";
+        document.getElementById("food").onclick=function() {
+             document.getElementById("fifthdiv").innerHTML=myarray[0];
+       }
+        
+        //log all values of array
+        
+        console.log(myarray);
+        
+        //shorthand way of creatign array 
+        
+        myarray2 = ["rain","sunshine"];
+        
+        //add n remove elements in array 
+        
+        //add
+         myarray2.push("snow");
+        
+        //remove
+          myarray2.splice(1,1);
+        //myarray2.splice(1,2);
+        
+        //adding in middle
+        
+        myarray2.splice(1,0,"hail"); // adding before 1 i,e sunshien.
+        
+        console.log(myarray2);
+        //length
+        console.log(myarray2.length);
+        
+        
+       //..................................
+        
+        //if statements
+        
+        
+        
+        document.getElementById("weatherbutton").onclick=function() {
+            if(document.getElementById("weather").value=="rain") {
+                alert("its raining");
+            }else {
+                 alert("its not raining");
+            }
+        }
+        
+        //Math 
+        
+        var x=5;
+        //alert(Math.pow(x,5));
+        
+        //Game - How many fingers 
+        
+        document.getElementById("ansbutton").onclick=function() {
+            
+            var y = Math.random();
+            y=5*y;
+            y=Math.floor(y);
+            if ( y== document.getElementById("answer").value) {
+                alert("Correct");
+            } else {
+                alert ("wrong. the number was"  +y);
+            }
+        }
+        
+       //for Loops
+        for( var i = 0; i < myarray.length; i++ ) {
+            alert(myarray[i]);
+        }
+        
+        var arrString = "My fav food is ";
+        for( var i = 0; i < myarray.length; i++ ) {
+            arrString = arrString + myarray[i]+ " ";
+        }
+        document.getElementById("arrString").innerHTML=arrString;
+        
+        //while loops
+        
+        var arr2String = "Today its ";
+        var j=0;
+        while(j< myarray2.length){
+            arr2String = arr2String + myarray2[j]+ " ";
+            j++;
+        }
+        
+        document.getElementById("arr2String").innerHTML=arr2String;
+        
+        
+        //guess number
+        
+        document.getElementById("guess").onclick=function() {
+             var gotit = false;
+            var guesses=1;
+            var r;
+            while (gotit==false) {
+                r = Math.random();
+                r = 5*r;
+                r = Math.floor(r);
+           
+                if(document.getElementById("mynum").value == r ) {
+                    gotit=true;
+                } else {
+                    guesses++;
+                }
+        }
+            console.log(guesses);
+            alert("Got it! It was a "+r+".It only took me "+guesses+" guesses!");
+            
+        }
+        
+        //Functions
+        
+        function adding(a,b) {
+            alert(a+b);
+        }
+        adding(3,4);
+        
+        function add(a,b) {
+           return(a+b);
+        }
+        document.getElementById("func").innerHTML = add(3,6);
+            
+    </script>
+</body>
+</html>
